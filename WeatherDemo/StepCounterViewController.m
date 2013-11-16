@@ -10,6 +10,10 @@
 
 @interface StepCounterViewController () <PBPebbleCentralDelegate> {
     BOOL _watchIsConnected;
+    __block NSInteger *numberOfStepsTotal;
+    __block NSString *numberOfStepsString;
+    __block int numberOfStepsInt;
+    __block NSString *totalDistance;
 }
 @property (nonatomic, strong) CMStepCounter *stepCounter;
 @property (nonatomic, strong) PBPebbleCentral *pebbleManager;
@@ -19,7 +23,9 @@
 @implementation StepCounterViewController
 
 
-@synthesize totalStepsLabel, pebbleStatusLabel;
+@synthesize totalStepsLabel, pebbleStatusLabel, totalDistanceLabel;
+
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -32,6 +38,7 @@
 
 - (void)viewDidLoad
 {
+    
     [super viewDidLoad];
     
        _watchIsConnected = NO;
@@ -100,6 +107,12 @@
             
             [watch appMessagesSetUUID:uuid];
             
+            [watch appMessagesAddReceiveUpdateHandler:^BOOL(PBWatch *watch, NSDictionary *update) {
+                NSLog(@"got update from pebble %@", update);
+                [self refreshSteps];
+                return YES;
+            }];
+            
             NSString *message = [NSString stringWithFormat:@"Yay! %@ supports AppMessages :D", [watch name]];
             [[[UIAlertView alloc] initWithTitle:@"Connected!" message:message delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
             
@@ -120,17 +133,6 @@
     [self logIfNoWatch];
     
     @try {
-        
-        __block NSInteger *numberOfStepsTotal;
-        __block NSString *numberOfStepsString;
-        __block int numberOfStepsInt;
-        
-        __block NSString *message = @"";
-        void (^showAlert)(void) = ^{
-            [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-                [[[UIAlertView alloc] initWithTitle:nil message:message delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
-            }];
-        };
         
         NSDate *now = [NSDate date];
         NSCalendar *gregorian = [[NSCalendar alloc]
@@ -153,20 +155,55 @@
                                              NSLog(@"%@", numberOfStepsString);
                                              NSLog(@"%d", numberOfStepsInt);
                                              
-                                             NSNumber *temperatureKey = @(0); // This is our custom-defined key for the temperature string.
-                                             NSDictionary *update = @{temperatureKey:[NSString stringWithFormat:@"%d", numberOfStepsInt] };
-                                             //NSDictionary *update = @{temperatureKey:numberOfStepsInt };
-                                             [self.watch appMessagesPushUpdate:update onSent:^(PBWatch *watch, NSDictionary *update, NSError *error) {
-                                                 message = error ? [error localizedDescription] : @"Update sent!";
-                                                 showAlert();
-                                             }];
-                                         }];
+                                    }];
         
         
         return;
     }
     @catch (NSException *exception) {
     }
+}
+
+-(void) refreshSteps{
+    
+    __block NSString *message = @"";
+    
+    NSDate *now = [NSDate date];
+    NSCalendar *gregorian = [[NSCalendar alloc]
+                             initWithCalendarIdentifier:NSGregorianCalendar];
+    NSDateComponents *comps = [gregorian components:NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay | NSCalendarUnitHour fromDate:now];
+    [comps setHour:0];
+    NSDate *today = [gregorian dateFromComponents:comps];
+    
+    [self.stepCounter queryStepCountStartingFrom:today
+                                              to:now
+                                         toQueue:[NSOperationQueue mainQueue]
+                                     withHandler:^(NSInteger numberOfSteps, NSError *error) {
+                                         
+                                         // NSLog(@"%s %ld %@", __PRETTY_FUNCTION__, numberOfSteps, error);
+                                         //weakSelf.title = [@(numberOfSteps) stringValue];
+                                         numberOfStepsTotal = &numberOfSteps;
+                                         numberOfStepsString = [@(numberOfSteps) stringValue];
+                                         numberOfStepsInt = numberOfSteps;
+                                         totalStepsLabel.text = [@(numberOfSteps) stringValue];
+                                         
+                                         float distance;
+                                         distance = (float)numberOfStepsInt / 2095.00;
+                                         NSLog(@"%.2f", distance);
+                                         totalDistanceLabel.text = [NSString stringWithFormat:@"%.2f mi", distance];
+                                         
+                                         NSLog(@"%d", numberOfStepsInt);
+                                         
+                                         NSNumber *temperatureKey = @(0); // This is our custom-defined key for the temperature string.
+                                         NSNumber *distanceKey = @(1);
+                                         NSDictionary *update = @{temperatureKey:[NSString stringWithFormat:@"%d", numberOfStepsInt], distanceKey:[NSString stringWithFormat:@"%.2f", distance]};
+                                         //NSDictionary *update = @{temperatureKey:numberOfStepsInt };
+                                         [self.watch appMessagesPushUpdate:update onSent:^(PBWatch *watch, NSDictionary *update, NSError *error) {
+                                             message = error ? [error localizedDescription] : @"Update sent!";
+                                         }];
+                                     }];
+    
+
 }
 
 #pragma mark - PBPebbleCentralDelegate

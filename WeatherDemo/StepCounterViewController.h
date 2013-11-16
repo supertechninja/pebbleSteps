@@ -12,6 +12,7 @@
 
 @interface StepCounterViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UILabel *totalStepsLabel;
+@property (weak, nonatomic) IBOutlet UILabel *totalDistanceLabel;
 @property (weak, nonatomic) IBOutlet UILabel *pebbleStatusLabel;
 - (void)setTargetWatch:(PBWatch*)watch;
 - (IBAction)refreshSteps:(id)sender;

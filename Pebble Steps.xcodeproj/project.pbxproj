@@ -13,9 +13,6 @@
 		1030EB6816C4DB1A006F46EA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1030EB6616C4DB1A006F46EA /* InfoPlist.strings */; };
 		1030EB6A16C4DB1A006F46EA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1030EB6916C4DB1A006F46EA /* main.m */; };
 		1030EB6E16C4DB1A006F46EA /* WDAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1030EB6D16C4DB1A006F46EA /* WDAppDelegate.m */; };
-		1030EB7016C4DB1A006F46EA /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 1030EB6F16C4DB1A006F46EA /* Default.png */; };
-		1030EB7216C4DB1A006F46EA /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1030EB7116C4DB1A006F46EA /* Default@2x.png */; };
-		1030EB7416C4DB1A006F46EA /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1030EB7316C4DB1A006F46EA /* Default-568h@2x.png */; };
 		1030EB9616C4DECC006F46EA /* ExternalAccessory.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1030EB9516C4DECC006F46EA /* ExternalAccessory.framework */; };
 		104820FE16C5970F00F2AFC8 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 104820FD16C5970F00F2AFC8 /* libz.dylib */; };
 		1048210016C5972E00F2AFC8 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 104820FF16C5972E00F2AFC8 /* CoreBluetooth.framework */; };
@@ -24,6 +21,7 @@
 		1048210B16C5CFFE00F2AFC8 /* PebbleKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1048210916C5CFFE00F2AFC8 /* PebbleKit.framework */; };
 		1048210C16C5CFFE00F2AFC8 /* PebbleVendor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1048210A16C5CFFE00F2AFC8 /* PebbleVendor.framework */; };
 		1092225B1738302F001117B2 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1092225A1738302F001117B2 /* CoreLocation.framework */; };
+		FC6914711836E05100E48F21 /* pebble_steps.png in Resources */ = {isa = PBXBuildFile; fileRef = FC6914701836E05100E48F21 /* pebble_steps.png */; };
 		FCE44FF318356228006A22B3 /* StepCounterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FCE44FF218356228006A22B3 /* StepCounterViewController.m */; };
 		FCE4503618356439006A22B3 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FCE4503518356439006A22B3 /* Storyboard.storyboard */; };
 /* End PBXBuildFile section */
@@ -39,9 +37,6 @@
 		1030EB6B16C4DB1A006F46EA /* Pebble Steps-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Pebble Steps-Prefix.pch"; sourceTree = "<group>"; };
 		1030EB6C16C4DB1A006F46EA /* WDAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WDAppDelegate.h; sourceTree = "<group>"; };
 		1030EB6D16C4DB1A006F46EA /* WDAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WDAppDelegate.m; sourceTree = "<group>"; };
-		1030EB6F16C4DB1A006F46EA /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
-		1030EB7116C4DB1A006F46EA /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
-		1030EB7316C4DB1A006F46EA /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		1030EB9516C4DECC006F46EA /* ExternalAccessory.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ExternalAccessory.framework; path = System/Library/Frameworks/ExternalAccessory.framework; sourceTree = SDKROOT; };
 		104820FD16C5970F00F2AFC8 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		104820FF16C5972E00F2AFC8 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
@@ -50,6 +45,7 @@
 		1048210916C5CFFE00F2AFC8 /* PebbleKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PebbleKit.framework; path = ../PebbleKit.framework; sourceTree = "<group>"; };
 		1048210A16C5CFFE00F2AFC8 /* PebbleVendor.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PebbleVendor.framework; path = ../PebbleVendor.framework; sourceTree = "<group>"; };
 		1092225A1738302F001117B2 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		FC6914701836E05100E48F21 /* pebble_steps.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pebble_steps.png; sourceTree = "<group>"; };
 		FCE44FF118356228006A22B3 /* StepCounterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StepCounterViewController.h; sourceTree = "<group>"; };
 		FCE44FF218356228006A22B3 /* StepCounterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StepCounterViewController.m; sourceTree = "<group>"; };
 		FCE4503518356439006A22B3 /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Storyboard.storyboard; path = ../Storyboard.storyboard; sourceTree = "<group>"; };
@@ -129,13 +125,11 @@
 		1030EB6416C4DB1A006F46EA /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				FC6914701836E05100E48F21 /* pebble_steps.png */,
 				1030EB6516C4DB1A006F46EA /* Pebble Steps-Info.plist */,
 				1030EB6616C4DB1A006F46EA /* InfoPlist.strings */,
 				1030EB6916C4DB1A006F46EA /* main.m */,
 				1030EB6B16C4DB1A006F46EA /* Pebble Steps-Prefix.pch */,
-				1030EB6F16C4DB1A006F46EA /* Default.png */,
-				1030EB7116C4DB1A006F46EA /* Default@2x.png */,
-				1030EB7316C4DB1A006F46EA /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -192,10 +186,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FC6914711836E05100E48F21 /* pebble_steps.png in Resources */,
 				1030EB6816C4DB1A006F46EA /* InfoPlist.strings in Resources */,
-				1030EB7016C4DB1A006F46EA /* Default.png in Resources */,
-				1030EB7216C4DB1A006F46EA /* Default@2x.png in Resources */,
-				1030EB7416C4DB1A006F46EA /* Default-568h@2x.png in Resources */,
 				FCE4503618356439006A22B3 /* Storyboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
