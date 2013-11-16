@@ -1,0 +1,31 @@
+{
+    "media": [
+        {
+            "defName": "APP_ICON",
+            "type": "png",
+            "file": "images/foot-step.png"
+        },
+        {
+            "defName": "IMAGE_SNOW",
+            "type": "png",
+            "file": "images/snow.png"
+        },
+        {
+            "defName": "IMAGE_CLOUD",
+            "type": "png",
+            "file": "images/cloud.png"
+        },
+        {
+            "defName": "IMAGE_RAIN",
+            "type": "png",
+            "file": "images/rain.png"
+        },
+        {
+            "defName": "IMAGE_SUN",
+            "type": "png",
+            "file": "images/sun.png"
+        }
+    ],
+    "friendlyVersion": "VERSION",
+    "versionDefName": "WEATHER_APP_RESOURCES"
+}
